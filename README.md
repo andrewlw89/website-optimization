@@ -1,3 +1,25 @@
+This project was done as part of the Udacity Font-end Web Developer Nanodegree. The goal is to take a website that is already working and optimize it in a way to improve performance.
+
+STEP 1: Optimize index.html to acheive a pagespeed score of over 90 from Google pagespeed insights.
+
+In order to accomplish this, I initially ran the pagespeed test on index.html to find out suggestions for where to start.
+1. The most obvious fix was to resize and compress all images on the page.
+2. Next I had to deal with render blocking javascript and css. For the css, I decided to put the styles in an imbedded style tag
+   to fix this issue.
+3. To deal with the render blocking javascript, I used the async tag for the google analytics since they were not integral to the loading of the page.
+
+STEP 2: Optimize pizza.html to achieve a frame rate of 60 frames per second.
+1. My initial timeline showed that alot of time was being used during the scripting process. To fix this, I found a for-loop that was performing
+   certain calculations more times than it should. I moved these calculations out of the loop to reduce scripting time.
+2. Next I noticed that, no matter the size of the browser, 200 pizzas were being rendered in the background which was causing alot of time to be
+   spent painting and rasterizing. To deal with this, I used javascript to determine the size of the window on resize and only generate as many
+   pizzas were actually in the viewport. I also set an event for resizing the browser so that the number of pizzas would match the size of the browser.
+3. I compressed and minified all CSS, JavaScript, and images to reduce time being painted, scripting, and loading.
+4. Lastly, the slider that changed the size of the pizzas on the screen was using a JavaScript for loop to interate through all of the pizzas and
+   resize them. The issue was that the loop was causing the layout to be recalculated after each loop which caused alot of time being wasted in the layout.
+   I chose to instead use JavaScript to add CSS classes to the pizzacontainer tags and then created a CSS style rule that would resize them based on the tag. 
+
+
 ## Website Performance Optimization portfolio project
 
 Your challenge, if you wish to accept it (and we sure hope you will), is to optimize this online portfolio for speed! In particular, optimize the critical rendering path and make this page render as quickly as possible by applying the techniques you've picked up in the [Critical Rendering Path course](https://www.udacity.com/course/ud884).
