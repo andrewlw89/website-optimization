@@ -470,8 +470,8 @@ function updatePositions() {
   var phaseInt = document.body.scrollTop / 1250; // Move calulation out of loop
 
   for (var i = 0; i < len; i++) {
-    var move = Math.sin(phaseInt + (i % 5)) * 100; // Calcuations that are on on invidivual basis
-    items[i].style.left = move + items[i].basicLeft + 'px'; // move the item
+    var move = Math.sin(phaseInt + (i % 5)); // Calcuations that are on on invidivual basis
+    items[i].style.left = items[i].basicLeft + 100 * move + 'px'; // move the item
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -491,7 +491,15 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 200; i++) {
+
+  var pizzaNeeded = function() {
+  	var x = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+  	return Math.round(x / 4 / 8);
+  };
+
+  var pizzaNum = pizzaNeeded();
+
+  for (var i = 0; i < pizzaNum; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
@@ -503,3 +511,4 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   updatePositions();
 });
+
