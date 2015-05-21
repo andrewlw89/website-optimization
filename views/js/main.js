@@ -402,8 +402,7 @@ var resizePizzas = function(size) {
 
   var getPizzas = document.getElementById("randomPizzas");
 
-    // We are update the class of the pizza container
-    // then using CSS classes to actually resize the pizzas themself with a #id.class .class {} selector
+    // Update the class of the pizza container then select it's child using #id.class .class {} selector
     switch(size) {
       case "1":
         document.getElementById("pizzaSize").innerHTML = "Small"; // Changed to getElementById as this is faster than a query selector
@@ -466,11 +465,11 @@ function updatePositions() {
   window.performance.mark("mark_start_frame");
 
   var items = document.getElementsByClassName('mover'); // Cache items
-  var len = items.length; // Cache length
+  var len = items.length; // Move out of for loop
   var phaseInt = document.body.scrollTop / 1250; // Move calulation out of loop
 
   for (var i = 0; i < len; i++) {
-    var move = Math.sin(phaseInt + (i % 5)); // Calcuations that are on on invidivual basis
+    var move = Math.sin(phaseInt + (i % 5));
     items[i].style.left = items[i].basicLeft + 100 * move + 'px'; // move the item
   }
 
@@ -487,7 +486,7 @@ function updatePositions() {
 // runs updatePositions on scroll
 window.addEventListener('scroll', updatePositions);
 
-// Generates the sliding pizzas when the page loads.
+// Generates the moving pizzas when the page loads.
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
