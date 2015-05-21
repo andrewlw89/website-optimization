@@ -38,6 +38,8 @@ form {
 .randomPizzaContainer {
   float: left;
   display: flex;
+  height: 325px;
+  width: 33%;
 }
 
 .randomPizzaContainer:after {
@@ -48,4 +50,16 @@ form {
 
  .container {
   background-color: rgba(240, 60, 60, 0.8);
+}
+
+#randomPizzas.smallPizza .randomPizzaContainer {
+  width: 25%;
+}
+
+#randomPizzas.mediumPizza .randomPizzaContainer {
+  width: 33%;
+}
+
+#randomPizzas.largePizza .randomPizzaContainer {
+  width: 50%;
 }
